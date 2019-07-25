@@ -6,4 +6,4 @@ if ! whoami &> /dev/null; then
   fi
 fi
 
-/home/yugabyte/bin/yb-master --fs_data_dirs=/mnt/data0 --rpc_bind_addresses=${POD_IP}:7100 --server_broadcast_addresses=${POD_NAME}.yb-masters:7100 --use_private_ip=never --master_addresses=yb-masters.${NAMESPACE}.svc.cluster.local:7100 --use_initial_sys_catalog_snapshot=true --master_replication_factor=1 --replication_factor=1 --logtostderr
+/home/yugabyte/bin/yb-master --fs_data_dirs=/mnt/data0 --rpc_bind_addresses=${POD_IP}:7100 --server_broadcast_addresses=${POD_NAME}.yb-masters:7100 --use_private_ip=never --master_addresses=yb-masters.${NAMESPACE}.svc.cluster.local:7100 --use_initial_sys_catalog_snapshot=true --master_replication_factor=1 --replication_factor=1 --logtostderr --start_pgsql_proxy --pgsql_proxy_bind_address=${POD_IP}:5433
